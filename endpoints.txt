@@ -1,0 +1,114 @@
+
+INFROMACIJE O UGW (VERZIJA):
+
+ curl -i -X GET \
+     -H "Content-Type: application/json" \
+     http://192.168.0.1/api/info 
+
+
+
+POZIVANJE ZA SECRET TOKEN:
+
+curl -X 'POST' \
+  -H 'Content-Type: application/json' \
+  -d '{"user": "apiuser"}'\
+   http://192.168.0.1/api/account/claim
+
+CONNECT NA MOJ WIFI:
+
+curl -i -X POST \
+     -H "Authorization: Bearer 9ebed37b-e77a-44aa-a51b-4267567b3bb4" \
+     -H "Content-Type: application/json" \
+     -d '{
+       "ssid": "203727",
+       "sec": "WPA2",
+       "password": "peugeot307"
+     }' \
+     http://192.168.0.1/api/net/wlans
+
+
+UPALITI SVJETLO:
+
+ curl -i -X PUT \
+     -H "Authorization: Bearer 9ebed37b-e77a-44aa-a51b-4267567b3bb4" \
+     -H "Content-Type: application/json" \
+     -d '{"bri": 1}' \
+     http://192.168.0.35/api/loads/1/target_state
+
+
+UGASITI SVJETLO:
+
+ curl -i -X PUT \
+     -H "Authorization: Bearer 9ebed37b-e77a-44aa-a51b-4267567b3bb4" \
+     -H "Content-Type: application/json" \
+     -d '{"bri": 0}' \
+     http://192.168.0.35/api/loads/1/target_state
+
+
+DIMMER:
+
+ curl -i -X PUT \
+     -H "Authorization: Bearer 9ebed37b-e77a-44aa-a51b-4267567b3bb4" \
+     -H "Content-Type: application/json" \
+     -d '{"bri": 5000}' \
+     http://192.168.0.35/api/loads/1/target_state
+
+
+DODAVANJE SOBE:
+
+curl -i -X POST \
+     -H "Authorization: Bearer 9ebed37b-e77a-44aa-a51b-4267567b3bb4"\
+     -H "Content-Type: application/json"\
+     -d '{ "name": "Living room","kind": 1}'\ 
+     http://192.168.0.35/api/rooms       
+
+{"data":{"id":5,"kind":1,"name":"Living room"},"status":"success"}%      
+
+
+PRIDRUZIVANJE LOAD:
+
+curl -i -X PATCH \
+     -H "Authorization: Bearer 9ebed37b-e77a-44aa-a51b-4267567b3bb4"\
+     -H "Content-Type: application/json"\
+     -d '{ "name": "Living bulb","room": 3}'\
+     http://192.168.0.35/api/loads/1
+
+
+POKRETANJE LOAD FUNKCIJE U SOBI:
+
+curl -i -X PUT \
+     -H "Authorization: Bearer 9ebed37b-e77a-44aa-a51b-4267567b3bb4"\
+     -H "Content-Type: application/json"\
+     -d '{ "bri": 1}'\
+     http://192.168.0.35/api/loads/1/target_state
+
+
+DODAVANJE SCENE:
+
+curl -i -X POST \
+     -H "Authorization: Bearer 9ebed37b-e77a-44aa-a51b-4267567b3bb4"\
+     -H "Content-Type: application/json"\
+     -d '{ "name":"UFC TV"}'\
+     http://192.168.0.35/api/scenes
+
+
+DODAVANJE STATE FUNKCIJE U SCENU:
+
+curl -i -X PATCH \
+     -H "Authorization: Bearer 9ebed37b-e77a-44aa-a51b-4267567b3bb4"\
+     -H "Content-Type: application/json"\
+     -d '{ "name": "Living bulb","scene": 6}'\
+     http://192.168.0.35/api/loads/1
+
+
+POKRETANJE LOADA U SCENI:
+
+curl -i -X PUT \
+     -H "Authorization: Bearer 9ebed37b-e77a-44aa-a51b-4267567b3bb4"\
+     -H "Content-Type: application/json"\
+     -d '{ "bri": 1}'\
+     http://192.168.0.35/api/loads/3/target_state
+
+
+
+
